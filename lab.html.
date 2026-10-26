@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>WEIRD WORLD | Secret Lab</title>
+<style>
+body{
+background:#05030f;
+color:#fff;
+font-family:system-ui;
+text-align:center;
+padding:40px;
+}
+.portal{
+font-size:90px;
+animation:pulse 2s infinite;
+}
+@keyframes pulse{
+50%{transform:scale(1.1);}
+}
+button{
+padding:12px 20px;
+border:none;
+border-radius:12px;
+background:#8b5cf6;
+color:white;
+font-size:18px;
+}
+</style>
+</head>
+<body>
+<div class="portal">🌀</div>
+<h1>SECRET LAB</h1>
+<p>You found a hidden room. More mysteries are coming...</p>
+<button onclick="location.href='index.html'">Return</button>
+</body>
+</html>
