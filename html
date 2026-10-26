@@ -1,0 +1,200 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="theme-color" content="#080714">
+<title>WEIRD WORLD | Enter the Unknown</title>
+<style>
+:root {
+  --bg:#080714; --panel:#151329; --purple:#a78bfa;
+  --cyan:#67e8f9; --text:#f5f3ff; --muted:#b4afcc;
+}
+* { box-sizing:border-box; }
+html { scroll-behavior:smooth; }
+body {
+  margin:0; background:
+    radial-gradient(ellipse at 50% 0%,#292052 0%,transparent 55%),
+    var(--bg);
+  color:var(--text); font-family:system-ui,sans-serif;
+}
+header {
+  padding:20px 6%; display:flex; justify-content:space-between;
+  align-items:center; gap:12px; border-bottom:1px solid #ffffff18;
+}
+.logo { font-weight:900; letter-spacing:2px; color:var(--cyan); }
+nav { display:flex; gap:14px; flex-wrap:wrap; }
+a { color:var(--muted); text-decoration:none; font-size:13px; }
+a:hover { color:var(--cyan); }
+.hero { text-align:center; padding:75px 18px 55px; }
+.planet {
+  font-size:75px; display:inline-block;
+  filter:drop-shadow(0 0 22px #a78bfa);
+  animation:float 4s ease-in-out infinite;
+}
+@keyframes float {
+  50% { transform:translateY(-12px) rotate(8deg); }
+}
+.tag { color:var(--cyan); letter-spacing:3px; font-size:11px; }
+h1 { font-size:clamp(38px,9vw,76px); margin:16px 0; line-height:1.05; }
+h1 span { color:var(--purple); }
+.hero p { color:var(--muted); max-width:520px; margin:18px auto 25px; line-height:1.8; }
+button {
+  border:0; border-radius:12px; padding:13px 18px;
+  font-weight:800; cursor:pointer; background:var(--purple); color:#100b20;
+}
+button:hover { filter:brightness(1.15); transform:translateY(-1px); }
+.secondary { background:#24203b; color:var(--text); border:1px solid #ffffff25; }
+section { padding:35px 6%; max-width:1100px; margin:auto; }
+h2 { font-size:25px; }
+.sub { color:var(--muted); line-height:1.7; }
+.grid { display:grid; grid-template-columns:repeat(auto-fit,minmax(220px,1fr)); gap:15px; }
+.card {
+  background:linear-gradient(145deg,#1b1833,#100f20);
+  border:1px solid #ffffff16; border-radius:18px; padding:22px;
+}
+.emoji { font-size:32px; }
+.card p { color:var(--muted); line-height:1.7; font-size:14px; }
+.result {
+  margin-top:15px; padding:15px; border-radius:12px;
+  background:#090817; border:1px solid #a78bfa55;
+  line-height:1.8; color:var(--cyan); overflow-wrap:anywhere;
+}
+input {
+  width:100%; padding:13px; border-radius:10px; margin:8px 0;
+  color:white; background:#090817; border:1px solid #ffffff35;
+  font-size:16px;
+}
+footer { text-align:center; padding:35px 15px; color:var(--muted); font-size:12px; }
+.hidden { display:none; }
+</style>
+</head>
+<body>
+<header>
+  <div class="logo">✦ WEIRD WORLD</div>
+  <nav>
+    <a href="#explore">Explore</a>
+    <a href="#mystery">Mysteries</a>
+    <a href="#secrets">Secrets</a>
+  </nav>
+</header>
+
+<main>
+  <div class="hero">
+    <div class="planet">🪐</div>
+    <div class="tag">REALITY IS ONLY THE BEGINNING</div>
+    <h1>WELCOME TO<br><span>THE UNKNOWN.</span></h1>
+    <p>A strange corner of the internet. Discover bizarre facts,
+       solve mysteries and unlock secrets hidden in plain sight.</p>
+    <button onclick="document.querySelector('#explore').scrollIntoView()">
+      ENTER THE UNKNOWN ↘
+    </button>
+  </div>
+
+  <section id="explore">
+    <h2>🌌 Explore the impossible</h2>
+    <p class="sub">Choose your doorway. Every world holds a different surprise.</p>
+    <div class="grid">
+      <article class="card">
+        <div class="emoji">👁️</div>
+        <h3>The Mystery Zone</h3>
+        <p>Unexplained events, strange history and questions that make you think.</p>
+        <button onclick="mystery()">Reveal a mystery</button>
+        <div id="mysteryResult" class="result hidden"></div>
+      </article>
+      <article class="card">
+        <div class="emoji">👽</div>
+        <h3>Alien Worlds</h3>
+        <p>Imagine strange planets, distant civilizations and unknown galaxies.</p>
+        <button onclick="alien()">Discover a planet</button>
+        <div id="alienResult" class="result hidden"></div>
+      </article>
+      <article class="card">
+        <div class="emoji">🌀</div>
+        <h3>Weird Generator</h3>
+        <p>Generate a strange fictional story with one tap.</p>
+        <button onclick="story()">Generate a story</button>
+        <div id="storyResult" class="result hidden"></div>
+      </article>
+    </div>
+  </section>
+
+  <section id="mystery">
+    <h2>🧩 The Daily Brain Glitch</h2>
+    <div class="card">
+      <p id="question">What has keys but cannot open a lock?</p>
+      <input id="answer" placeholder="Type your answer..." autocomplete="off">
+      <button onclick="checkAnswer()">Submit answer</button>
+      <div id="answerResult" class="result hidden"></div>
+    </div>
+  </section>
+
+  <section id="secrets">
+    <h2>🔐 The Secret Terminal</h2>
+    <div class="card">
+      <p class="sub">Some doors only open with the right code.</p>
+      <input id="code" placeholder="Enter secret code..." autocomplete="off">
+      <button onclick="unlock()">Unlock terminal</button>
+      <div id="secretResult" class="result hidden"></div>
+    </div>
+    <p class="sub">Hint: try the word <b>UNKNOWN</b>.</p>
+  </section>
+</main>
+
+<footer>
+  ✦ WEIRD WORLD · Explore responsibly · Question everything
+  <br><br>Made for curious minds across planet Earth 🌍
+</footer>
+
+<script>
+const pick = list => list[Math.floor(Math.random()*list.length)];
+
+function show(id,text) {
+  const el=document.getElementById(id);
+  el.textContent=text;
+  el.classList.remove('hidden');
+}
+
+function mystery() {
+  show('mysteryResult',pick([
+    'Why do we dream? Scientists study dreams, memory and emotion, but many details remain under investigation.',
+    'The Wow! signal was a strong, unusual radio signal detected in 1977. Its origin remains unexplained.',
+    'Some deep-sea creatures produce their own light through a process called bioluminescence. Nature is stranger than fiction.',
+    'The universe contains billions of galaxies. What else might exist beyond the worlds we know?'
+  ]));
+}
+
+function alien() {
+  const planets=[
+    'NEBULA-9: Violet skies, floating mountains and oceans that glow at night.',
+    'VOID-7: A frozen world where enormous crystal caves reflect distant stars.',
+    'ZARA-12: A fictional ocean planet with floating forests and two moons.',
+    'ECHO-3: A fictional desert world where the wind whistles through giant stone arches.'
+  ];
+  show('alienResult',pick(planets)+' (Imaginary world)');
+}
+
+function story() {
+  const places=['an abandoned space station','a hidden city beneath the ocean','a village where shadows move alone','a portal behind an old mirror'];
+  const events=['received a message from tomorrow','discovered a door that had no handle','heard their own voice coming from the stars','found a map showing a place that did not exist'];
+  show('storyResult','At midnight, someone exploring '+pick(places)+' '+pick(events)+'. Then everything went silent...');
+}
+
+function checkAnswer() {
+  const answer=document.getElementById('answer').value.trim().toLowerCase();
+  if(!answer) return show('answerResult','Enter your answer first.');
+  show('answerResult',answer.includes('piano') || answer.includes('keyboard')
+    ? 'Correct! 🎉 A piano or keyboard has keys but cannot open a lock.'
+    : 'Not quite! Hint: musicians use it to make music.');
+}
+
+function unlock() {
+  const code=document.getElementById('code').value.trim().toUpperCase();
+  show('secretResult',code==='UNKNOWN'
+    ? 'ACCESS GRANTED ✨ Welcome, explorer. Your journey into WEIRD WORLD has begun.'
+    : 'ACCESS DENIED 🔒 Hint: read the clue above.');
+}
+</script>
+</body>
+</html>
