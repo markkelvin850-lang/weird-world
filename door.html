@@ -1,4 +1,3 @@
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -72,6 +71,14 @@ document.getElementById("terminal").addEventListener("submit",function(e){
   e.preventDefault();
   const cmd=input.value.trim().toLowerCase();
   if(!cmd)return;
+  if(cmd === "orbit-27"){
+    screen.textContent = "🔓 SECRET CODE ACCEPTED!\nWelcome to the hidden world...";
+    setTimeout(() => {
+      window.location.href = "lab.html";
+    }, 1500);
+    input.value = "";
+    return;
+  }
   let reply=messages[cmd];
   if(cmd==="clear"){
     screen.textContent="Terminal cleared.\nType help to continue.";
@@ -94,4 +101,3 @@ document.getElementById("terminal").addEventListener("submit",function(e){
 </script>
 </body>
 </html>
-
