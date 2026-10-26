@@ -2,37 +2,90 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>WEIRD WORLD | Secret Lab</title>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="theme-color" content="#080514">
+<title>Secret Lab | WEIRD WORLD</title>
 <style>
+*{box-sizing:border-box}
 body{
-background:#05030f;
-color:#fff;
-font-family:system-ui;
-text-align:center;
-padding:40px;
+ margin:0;min-height:100vh;padding:24px 16px;
+ background:radial-gradient(ellipse at top,#24104b,#080514 65%);
+ color:#f5f0ff;font-family:system-ui,sans-serif;
+ display:flex;justify-content:center;align-items:center
 }
-.portal{
-font-size:90px;
-animation:pulse 2s infinite;
-}
-@keyframes pulse{
-50%{transform:scale(1.1);}
-}
-button{
-padding:12px 20px;
-border:none;
-border-radius:12px;
-background:#8b5cf6;
-color:white;
-font-size:18px;
-}
+.lab{width:100%;max-width:520px;text-align:center;
+ border:1px solid #8b4dff;border-radius:22px;
+ padding:28px 20px;box-shadow:0 0 35px #792cff25}
+.symbol{font-size:64px}
+h1{color:#bd91ff;letter-spacing:3px}
+p{color:#c5b9db;line-height:1.7}
+.panel{background:#100b20;border:1px solid #463263;
+ padding:18px;border-radius:14px;margin:20px 0}
+input,button{width:100%;padding:14px;border-radius:10px;
+ font-size:16px;margin-top:10px}
+input{background:#080514;color:white;border:1px solid #8b4dff}
+button{background:#6823ce;color:white;border:0;font-weight:bold}
+button:active{transform:scale(.98)}
+#result{min-height:52px;color:#8fffd0;overflow-wrap:anywhere}
+a{color:#c29aff;display:inline-block;margin-top:20px}
+.small{font-size:13px;color:#9587ac}
 </style>
 </head>
 <body>
-<div class="portal">🌀</div>
+<main class="lab">
+<div class="symbol">🧪</div>
 <h1>SECRET LAB</h1>
-<p>You found a hidden room. More mysteries are coming...</p>
-<button onclick="location.href='index.html'">Return</button>
+<p>Explorer, your next discovery awaits.</p>
+
+<section class="panel">
+<h2>MISSION 001</h2>
+<p>
+I can speak without a mouth.<br>
+I can hear without ears.<br>
+I repeat what you say, but I am not alive.<br><br>
+<strong>What am I?</strong>
+</p>
+
+<button id="hint">REVEAL A HINT</button>
+<p id="hintText" hidden>
+You might hear me in a mountain tunnel.
+</p>
+
+<form id="puzzle">
+<input id="answer" placeholder="Enter your answer..."
+autocomplete="off" required>
+<button type="submit">SUBMIT ANSWER</button>
+</form>
+<p id="result" aria-live="polite"></p>
+</section>
+
+<p class="small">Every mystery leads to another.</p>
+<a href="index.html">← Return to WEIRD WORLD</a>
+</main>
+
+<script>
+const form = document.getElementById("puzzle");
+const answer = document.getElementById("answer");
+const result = document.getElementById("result");
+const hint = document.getElementById("hint");
+const hintText = document.getElementById("hintText");
+
+hint.addEventListener("click", () => {
+  hintText.hidden = false;
+});
+
+form.addEventListener("submit", (event) => {
+  event.preventDefault();
+
+  if (answer.value.trim().toLowerCase() === "echo") {
+    result.textContent =
+      "✅ CORRECT! MISSION 001 COMPLETE. You are a true explorer!";
+    answer.value = "";
+  } else {
+    result.textContent =
+      "❌ Not quite. Think carefully, explorer. Try again!";
+  }
+});
+</script>
 </body>
 </html>
