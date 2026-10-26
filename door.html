@@ -1,1 +1,97 @@
 
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>WEIRD WORLD | The Black Door</title>
+<style>
+*{box-sizing:border-box}
+body{
+  margin:0;min-height:100vh;padding:24px;
+  display:flex;align-items:center;justify-content:center;
+  background:radial-gradient(circle,#21103d,#05030a 70%);
+  color:#e9e4ff;font-family:monospace
+}
+main{
+  width:100%;max-width:620px;padding:25px;
+  background:#0c0915;border:1px solid #7543a8;
+  border-radius:18px;box-shadow:0 0 35px #7429a544
+}
+h1{color:#c49aff;text-align:center;letter-spacing:3px}
+.door{text-align:center;font-size:70px;animation:pulse 2s infinite}
+@keyframes pulse{50%{transform:scale(1.08);filter:brightness(1.5)}}
+p{line-height:1.6;color:#c7bddc}
+#screen{
+  min-height:180px;max-height:300px;overflow:auto;
+  background:#030507;border:1px solid #30263d;
+  padding:15px;border-radius:8px;white-space:pre-wrap;
+  color:#7ef9c6;margin:20px 0
+}
+form{display:flex;gap:8px}
+input{
+  min-width:0;flex:1;background:#171020;color:white;
+  border:1px solid #7543a8;border-radius:8px;padding:13px
+}
+button{
+  background:#8b45d6;color:white;border:0;
+  padding:12px;border-radius:8px;font-weight:bold
+}
+a{color:#c49aff;display:block;text-align:center;margin-top:22px}
+small{color:#a99bbd}
+</style>
+</head>
+<body>
+<main>
+  <div class="door">🚪</div>
+  <h1>THE BLACK DOOR</h1>
+  <p>A voice whispers from the other side. Enter <b>help</b> to discover the available commands.</p>
+  <div id="screen" aria-live="polite">BLACK DOOR TERMINAL v1.0
+Connection established...
+Type help to begin.</div>
+  <form id="terminal">
+    <input id="command" placeholder="Enter command..." autocomplete="off" aria-label="Terminal command">
+    <button type="submit">ENTER</button>
+  </form>
+  <p><small>Hint: some answers unlock more of the story.</small></p>
+  <a href="index.html">← Return to WEIRD WORLD</a>
+</main>
+<script>
+const screen=document.getElementById("screen");
+const input=document.getElementById("command");
+let vaultOpen=false;
+
+const messages={
+  help:"COMMANDS\nhelp — show commands\nopen vault — unlock the vault\n decode — reveal a message\nwhoami — learn your identity\nclear — clear the terminal",
+  decode:"MESSAGE DECODED:\n'Beyond the door, the world is not what it seems.'",
+  whoami:"VISITOR IDENTIFIED.\nYou are an explorer of the unknown.",
+  "open vault":""
+};
+
+document.getElementById("terminal").addEventListener("submit",function(e){
+  e.preventDefault();
+  const cmd=input.value.trim().toLowerCase();
+  if(!cmd)return;
+  let reply=messages[cmd];
+  if(cmd==="clear"){
+    screen.textContent="Terminal cleared.\nType help to continue.";
+    input.value="";
+    return;
+  }
+  if(cmd==="open vault"){
+    if(!vaultOpen){
+      vaultOpen=true;
+      reply="ACCESS GRANTED.\n🔓 THE VAULT IS OPEN.\nSecret code: ORBIT-27\nRemember this code for your next discovery.";
+    }else{
+      reply="The vault is already open. You found its secret.";
+    }
+  }
+  if(!reply)reply="ACCESS DENIED.\nUnknown command. Type help.";
+  screen.textContent+="\n\n> "+cmd+"\n"+reply;
+  screen.scrollTop=screen.scrollHeight;
+  input.value="";
+});
+</script>
+</body>
+</html>
+
