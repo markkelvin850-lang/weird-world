@@ -1,0 +1,66 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="theme-color" content="#070311">
+<title>Room 002 | WEIRD WORLD</title>
+<style>
+body {
+  margin:0; min-height:100vh; padding:24px;
+  box-sizing:border-box; display:grid; place-items:center;
+  background:radial-gradient(circle,#251044,#070311 70%);
+  color:#f6edff; font-family:system-ui,sans-serif;
+  text-align:center;
+}
+main {
+  max-width:480px; padding:28px 20px;
+  border:1px solid #a35cff; border-radius:22px;
+  box-shadow:0 0 35px #8a2cff35;
+}
+.symbol {font-size:65px}
+h1 {color:#c69aff;letter-spacing:3px}
+p {line-height:1.7;color:#c9bbdc}
+input,button {
+  box-sizing:border-box;width:100%;padding:14px;
+  margin-top:12px;border-radius:10px;font-size:16px;
+}
+input {background:#10091c;color:white;border:1px solid #8b4dff}
+button {background:#7025d9;color:white;border:0;font-weight:bold}
+#message {color:#8fffd0;overflow-wrap:anywhere}
+a {color:#c69aff;display:inline-block;margin-top:22px}
+</style>
+</head>
+<body>
+<main>
+<div class="symbol">🌀</div>
+<h1>ROOM 002</h1>
+<p>You passed the first mystery. Now discover the next signal.</p>
+<p><strong>What has keys but opens no locks?</strong></p>
+
+<form id="form">
+<input id="answer" placeholder="Enter your answer..." required>
+<button type="submit">UNLOCK ROOM</button>
+</form>
+<p id="message" aria-live="polite"></p>
+<a href="lab.html">← Return to Secret Lab</a>
+<br>
+<a href="index.html">← Main World</a>
+</main>
+
+<script>
+document.getElementById("form").addEventListener("submit", function(e) {
+  e.preventDefault();
+  const answer = document.getElementById("answer").value.trim().toLowerCase();
+  const message = document.getElementById("message");
+
+  if (answer === "piano" || answer === "keyboard") {
+    message.textContent = "🔓 SIGNAL ACCEPTED! ROOM 002 IS YOURS.";
+  } else {
+    message.textContent = "❌ Signal rejected. Think of music or typing.";
+  }
+});
+</script>
+</body>
+</html>
