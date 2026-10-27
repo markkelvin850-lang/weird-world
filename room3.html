@@ -1,0 +1,72 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Room 003 | Weird World</title>
+<style>
+body {
+  background: #070710;
+  color: #00ffb3;
+  font-family: monospace;
+  text-align: center;
+  padding: 35px 15px;
+}
+.panel {
+  max-width: 500px;
+  margin: 30px auto;
+  padding: 25px;
+  border: 1px solid #00ffb3;
+  border-radius: 12px;
+  background: #101020;
+}
+input, button {
+  padding: 12px;
+  margin: 8px;
+  border-radius: 6px;
+  font-size: 16px;
+}
+button {
+  background: #00ffb3;
+  border: none;
+  cursor: pointer;
+}
+a { color: #fff; }
+</style>
+</head>
+<body>
+<h1>🗃️ THE FORBIDDEN ARCHIVE</h1>
+<p>WEIRD WORLD // CLASSIFIED FILE 003</p>
+
+<div class="panel">
+  <h2>ACCESS RESTRICTED</h2>
+  <p>Decode this clue:</p>
+  <p>"I speak without a mouth and hear without ears."</p>
+  <input id="answer" placeholder="Enter your answer">
+  <br>
+  <button onclick="unlock()">DECODE</button>
+  <p id="result"></p>
+</div>
+
+<p><a href="index.html">← Return to Home</a></p>
+
+<script>
+function unlock() {
+  const answer = document.getElementById("answer")
+    .value.trim().toLowerCase();
+  const result = document.getElementById("result");
+
+  if (answer === "echo") {
+    result.innerHTML =
+      "🔓 ARCHIVE UNLOCKED!<br><br>" +
+      "FILE 003: THE UNKNOWN IS WATCHING.<br><br>" +
+      "You have discovered the next secret.";
+  } else {
+    result.textContent =
+      "ACCESS DENIED. Think carefully, explorer.";
+  }
+}
+</script>
+</body>
+</html>
