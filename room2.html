@@ -49,20 +49,11 @@ a {color:#c69aff;display:inline-block;margin-top:22px}
 </main>
 
 <script>
-function unlock() {
-  const answer = document.getElementById("answer")
-    .value.trim().toLowerCase();
-  const result = document.getElementById("result");
+document.getElementById("form").addEventListener("submit", function(event) {
+  event.preventDefault();
 
-  const completed = JSON.parse(
-    localStorage.getItem("ww_missions") || "[]"
-  );
-
-  if (!completed.includes("lab.html")) {
-    result.textContent =
-      "🔒 ROOM LOCKED! Complete Room 001 first.";
-    return;
-  }
+  const answer = document.getElementById("answer").value.trim().toLowerCase();
+  const result = document.getElementById("message");
 
   if (answer === "piano" || answer === "keyboard") {
     result.innerHTML =
@@ -71,7 +62,7 @@ function unlock() {
   } else {
     result.textContent = "❌ Incorrect. Try again, explorer!";
   }
-}
+});
 </script>
 </body>
 </html>
