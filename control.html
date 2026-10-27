@@ -1,0 +1,68 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Secret Control Center</title>
+<style>
+body {
+  background: #070710;
+  color: #00ffb3;
+  font-family: monospace;
+  padding: 20px;
+  text-align: center;
+}
+.panel {
+  max-width: 500px;
+  margin: 20px auto;
+  padding: 20px;
+  border: 1px solid #00ffb3;
+  border-radius: 12px;
+  background: #111122;
+}
+a { color: #fff; display: block; margin: 16px; }
+input, button { padding: 12px; margin: 8px; }
+button { background: #00ffb3; border: 0; border-radius: 6px; }
+</style>
+</head>
+<body>
+<h1>🖥️ CONTROL CENTER</h1>
+<p>WEIRD WORLD // SYSTEM 004</p>
+
+<div class="panel">
+  <h2>MISSION DIRECTORY</h2>
+  <a href="index.html">🌌 Main World</a>
+  <a href="door.html">🚪 Black Door</a>
+  <a href="lab.html">🧪 Secret Lab</a>
+  <a href="room2.html">🔐 Room 002</a>
+  <a href="room3.html">🗃️ Forbidden Archive</a>
+</div>
+
+<div class="panel">
+  <h2>🔎 SYSTEM CONSOLE</h2>
+  <p>Enter the system code:</p>
+  <input id="code" placeholder="Enter code">
+  <button onclick="checkCode()">EXECUTE</button>
+  <p id="result"></p>
+</div>
+
+<script>
+function checkCode() {
+  const code = document.getElementById("code")
+    .value.trim().toLowerCase();
+  const result = document.getElementById("result");
+
+  if (code === "orbit-27") {
+    result.textContent =
+      "SYSTEM ONLINE. THE WORLD IS BIGGER THAN YOU THINK.";
+  } else if (code === "echo") {
+    result.textContent =
+      "ARCHIVE SIGNAL DETECTED. KEEP EXPLORING.";
+  } else {
+    result.textContent = "UNKNOWN CODE. ACCESS NOT RECOGNIZED.";
+  }
+}
+</script>
+</body>
+</html>
