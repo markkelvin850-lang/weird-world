@@ -49,17 +49,29 @@ a {color:#c69aff;display:inline-block;margin-top:22px}
 </main>
 
 <script>
-document.getElementById("form").addEventListener("submit", function(e) {
-  e.preventDefault();
-  const answer = document.getElementById("answer").value.trim().toLowerCase();
-  const message = document.getElementById("message");
+function unlock() {
+  const answer = document.getElementById("answer")
+    .value.trim().toLowerCase();
+  const result = document.getElementById("result");
+
+  const completed = JSON.parse(
+    localStorage.getItem("ww_missions") || "[]"
+  );
+
+  if (!completed.includes("lab.html")) {
+    result.textContent =
+      "🔒 ROOM LOCKED! Complete Room 001 first.";
+    return;
+  }
 
   if (answer === "piano" || answer === "keyboard") {
-    message.innerHTML = '🔓 ROOM 002 COMPLETE!<br><br><a href="room3.html">🗃️ ENTER ROOM 003</a>';
+    result.innerHTML =
+      '✅ ROOM 002 COMPLETE!<br><br>' +
+      '<a href="room3.html">🗃️ ENTER ROOM 003</a>';
   } else {
-    message.textContent = "❌ Signal rejected. Think of music or typing.";
+    result.textContent = "❌ Incorrect. Try again, explorer!";
   }
-});
+}
 </script>
 </body>
 </html>
