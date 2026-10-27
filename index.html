@@ -207,5 +207,41 @@ const msgs=[
 console.log(msgs[Math.floor(Math.random()*msgs.length)]);
 },4000);
 </script>
+<div style="border:1px solid #00ffb3;padding:18px;border-radius:12px;margin:20px auto;max-width:500px;background:#101020;color:#00ffb3;font-family:monospace;">
+  <h2>🎯 MISSION TRACKER</h2>
+  <p id="mission-count">Missions explored: 0 / 5</p>
+  <div id="mission-list"></div>
+</div>
+
+<script>
+const missions = [
+  ["Main World", "index.html"],
+  ["Black Door", "door.html"],
+  ["Secret Lab", "lab.html"],
+  ["Room 002", "room2.html"],
+  ["Forbidden Archive", "room3.html"]
+];
+
+const visited = JSON.parse(
+  localStorage.getItem("ww_missions") || "[]"
+);
+
+const currentPage = location.pathname.split("/").pop() || "index.html";
+
+if (missions.some(m => m[1] === currentPage) &&
+    !visited.includes(currentPage)) {
+  visited.push(currentPage);
+  localStorage.setItem("ww_missions", JSON.stringify(visited));
+}
+
+document.getElementById("mission-count").textContent =
+  "Missions explored: " + visited.length + " / " + missions.length;
+
+document.getElementById("mission-list").innerHTML =
+  missions.map(m =>
+    "<p>" + (visited.includes(m[1]) ? "✅" : "🔒") +
+    " " + m[0] + "</p>"
+  ).join("");
+</script>
 </body>
 </html>
