@@ -210,6 +210,11 @@ console.log(msgs[Math.floor(Math.random()*msgs.length)]);
 <div style="border:1px solid #00ffb3;padding:18px;border-radius:12px;margin:20px auto;max-width:500px;background:#101020;color:#00ffb3;font-family:monospace;">
   <h2>🎯 MISSION TRACKER</h2>
   <p id="mission-count">Missions explored: 0 / 5</p>
+  <div style="background:#292940;border-radius:10px;overflow:hidden;height:12px;">
+    <div id="mission-progress"
+         style="width:0%;height:12px;background:#00ffb3;">
+    </div>
+  </div>
   <div id="mission-list"></div>
 </div>
 
@@ -236,6 +241,8 @@ if (missions.some(m => m[1] === currentPage) &&
 
 document.getElementById("mission-count").textContent =
   "Missions explored: " + visited.length + " / " + missions.length;
+document.getElementById("mission-progress").style.width =
+  (visited.length / missions.length * 100) + "%";
 
 document.getElementById("mission-list").innerHTML =
   missions.map(m =>
