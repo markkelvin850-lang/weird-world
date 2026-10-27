@@ -49,19 +49,20 @@ a {color:#c69aff;display:inline-block;margin-top:22px}
 </main>
 
 <script>
-document.getElementById("form").addEventListener("submit", function(event) {
-  event.preventDefault();
-
-  const answer = document.getElementById("answer").value.trim().toLowerCase();
-  const result = document.getElementById("message");
+function unlockRoom() {
+  var answer = document.getElementById("answer").value.trim().toLowerCase();
+  var message = document.getElementById("message");
 
   if (answer === "piano" || answer === "keyboard") {
-    result.innerHTML =
-      '✅ ROOM 002 COMPLETE!<br><br>' +
-      '<a href="room3.html">🗃️ ENTER ROOM 003</a>';
+    message.innerHTML = '✅ ROOM 002 COMPLETE!<br><br><a href="room3.html">🗃️ ENTER ROOM 003</a>';
   } else {
-    result.textContent = "❌ Incorrect. Try again, explorer!";
+    message.textContent = "❌ Incorrect. Try again, explorer!";
   }
+}
+
+document.getElementById("form").addEventListener("submit", function(event) {
+  event.preventDefault();
+  unlockRoom();
 });
 </script>
 </body>
