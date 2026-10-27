@@ -1,4 +1,3 @@
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -56,7 +55,7 @@ document.getElementById("form").addEventListener("submit", function(e) {
   const message = document.getElementById("message");
 
   if (answer === "piano" || answer === "keyboard") {
-    message.textContent = "🔓 SIGNAL ACCEPTED! ROOM 002 IS YOURS.";
+    message.innerHTML = '🔓 ROOM 002 COMPLETE!<br><br><a href="room3.html">🗃️ ENTER ROOM 003</a>';
   } else {
     message.textContent = "❌ Signal rejected. Think of music or typing.";
   }
