@@ -78,8 +78,9 @@ form.addEventListener("submit", (event) => {
   event.preventDefault();
 
   if (answer.value.trim().toLowerCase() === "echo") {
-    result.textContent =
-      "✅ CORRECT! MISSION 001 COMPLETE. You are a true explorer!";
+    result.innerHTML =
+      '✅ MISSION 001 COMPLETE!<br><br>' +
+      '<a href="room2.html">🔓 ENTER ROOM 002</a>';
     answer.value = "";
   } else {
     result.textContent =
